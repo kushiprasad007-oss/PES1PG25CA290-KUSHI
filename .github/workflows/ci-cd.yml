@@ -1,0 +1,24 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run application check
+        run: |
+          echo "CI/CD pipeline is running"
+          echo "Checking index.html..."
+          test -f index.html
+          echo "index.html exists"
